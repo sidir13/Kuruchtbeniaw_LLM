@@ -45,7 +45,7 @@ The model is fine-tuned using Python and Flask API handles the communication bet
 - Python 3.x
 - Flask
 - MLflow
-- Other dependencies (listed in `requirements.txt`) (If you see this, there isn't yet an requirements.txt file, he will come up soon)
+- Other dependencies (listed in `requirements.txt`)
 
 #### Installation:
 
