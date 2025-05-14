@@ -1,7 +1,7 @@
 # LLM Fine-Tuned Model Deployment
 
 
-![Interface of the LLM](images/llm-interface-screenshot.png)
+![Interface of the LLM](images/interface.PNG)
 
 This project involves deploying a fine-tuned Large Language Model (LLM) on a website. The model is fine-tuned using personal data and is deployed using MLflow. The website frontend is built with JavaScript, HTML, and CSS, while the backend API is powered by Flask, allowing communication through API calls.
 
