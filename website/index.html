@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuruchtbéniaw bot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>Kuruchtbéniaw bot</header>
+
+  <div id="chat-box" style="height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px;">
+  
+  </div>
+
+  <div class="input-area">
+    <input type="text" id="user-input" placeholder="Write a message..." />
+    <button id="send-btn">Send</button>
+  </div>
+
+  <script>
+    // Function send message
+    document.getElementById('send-btn').addEventListener('click', function() {
+      const userInput = document.getElementById('user-input').value;
+
+      // Display user message
+      const chatBox = document.getElementById('chat-box');
+      chatBox.innerHTML += `<div><b>Vous:</b> ${userInput}</div>`;
+      
+      // Delelte input after it was send
+      document.getElementById('user-input').value = '';
+
+      // Api call
+      fetch('http://127.0.0.1:5555/predict', {  
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            prompt: userInput  
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Display model respond
+        const botResponse = data.response;  // Get model output
+        chatBox.innerHTML += `<div><b>Enrico:</b> ${botResponse}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;  // Scroll below
+      })
+      .catch(error => {
+        console.error('Erreur:', error);
+      });
+    });
+  </script>
+
+</body>
+</html>
